@@ -29,7 +29,7 @@ export default function Navbar() {
     transition: 'all 0.3s ease',
     padding: isScrolled ? '12px 0' : '20px 0',
     background: isScrolled
-      ? '#053d9657' // Updated to main dark blue
+      ? '#053d9657' 
       : 'rgba(255, 255, 255, 0.15)',
     backdropFilter: 'blur(12px)',
     borderBottom: isScrolled ? 'none' : '1px solid rgba(255,255,255,0.2)',

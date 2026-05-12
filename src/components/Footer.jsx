@@ -47,15 +47,15 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 font-heading">Reach Us</h4>
             <div className="space-y-4 text-slate-400 text-sm">
               <div className="flex items-start gap-3">
-                <span>📞</span>
+                <span>✆</span>
                 <p>+966 56 188 6137</p>
               </div>
               <div className="flex items-start gap-3">
-                <span>✉️</span>
+                <span>✉</span>
                 <p className="break-all">premieraerocoolservices@gmail.com</p>
               </div>
               <div className="flex items-start gap-3">
-                <span>📍</span>
+                <span>𖡡</span>
                 <p>Jeddah, Saudi Arabia</p>
               </div>
             </div>
@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-slate-800 text-center text-slate-500 text-xs">
           <p>
             © 2026 PREMIER AEROCOOL SERVICES. All rights reserved. | 
-            Designed & Developed by <a href="https://www.asseminate.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Asseminate</a>
+            Designed & Developed by <a href="https://www.asseminate.com/" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:underline">Asseminate</a>
           </p>
         </div>
       </div>
