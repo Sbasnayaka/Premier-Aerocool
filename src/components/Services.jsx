@@ -4,22 +4,22 @@ const services = [
   {
     title: "AC Installation",
     description: "Professional installation for residential and commercial units with precision cooling.",
-    icon: "❄️"
+    icon: "❄︎˚"
   },
   {
     title: "Repair & Maintenance",
     description: "Expert diagnostics and 24/7 emergency repair services to keep you cool.",
-    icon: "🔧"
+    icon: "🛠"
   },
   {
     title: "Duct Cleaning",
     description: "Advanced cleaning technology to ensure clean airflow and healthy environments.",
-    icon: "🌬️"
+    icon: "🌪༄"
   },
   {
     title: "Airflow Optimization",
     description: "Engineering solutions to maximize energy efficiency and cooling performance.",
-    icon: "📊"
+    icon: "↘↗"
   }
 ];
 
@@ -29,7 +29,7 @@ const Services = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4 font-heading">Our Services</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-blue-900 mx-auto rounded-full" />
           <p className="mt-6 text-slate-600">We provide a growing range of Air Conditioning spare parts and professional services.</p>
         </div>
 
@@ -44,7 +44,7 @@ const Services = () => {
               whileHover={{ y: -10 }}
               className="p-8 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
             >
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-3xl group-hover:bg-blue-900 text-blue-900 group-hover:text-white transition-colors duration-300">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading">{service.title}</h3>
