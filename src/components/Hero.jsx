@@ -17,21 +17,21 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-6">
+              <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-900 text-sm font-semibold mb-6">
                 ❄️ Saudi Arabia's AC Experts
               </span>
               <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-tight mb-6">
-                Cooling the <span className="text-blue-500">Future.</span>
+                Cooling the <span className="text-blue-900">Future.</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
                 Premium air conditioning spare parts and professional services ensuring lasting comfort across the Kingdom.
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <a href="#contact" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-200">
+                <a href="#contact" className="px-8 py-4 bg-blue-900 text-white rounded-full font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-200">
                   Book Repair Now
                 </a>
-                <a href="tel:+966561886137" className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full font-bold hover:bg-blue-50 transition">
+                <a href="tel:+966561886137" className="px-8 py-4 border-2 border-blue-900 text-blue-900 rounded-full font-bold hover:bg-blue-50 transition">
                   Call Now
                 </a>
               </div>
@@ -59,7 +59,7 @@ const Hero = () => {
               className="relative p-12 bg-white rounded-3xl shadow-2xl border border-slate-100"
             >
               <img src={logo} alt="Premier Aerocool" className="w-64 h-auto" />
-              <div className="absolute -bottom-6 -right-6 bg-blue-500 text-white p-4 rounded-2xl shadow-xl">
+              <div className="absolute -bottom-6 -right-6 bg-blue-900 text-white p-4 rounded-2xl shadow-xl">
                 <p className="font-bold">24/7 Support</p>
                 <p className="text-xs opacity-80 text-white">Emergency Services</p>
               </div>
