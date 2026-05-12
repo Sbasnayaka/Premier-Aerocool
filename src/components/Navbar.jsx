@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiMenu, HiX } from 'react-icons/hi';
 import logo from '../assets/LOGO.png';
 
 const navLinks = [
@@ -21,7 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -35,14 +33,11 @@ export default function Navbar() {
     top: 0,
     width: '100%',
     zIndex: 999,
-    transition: 'all 0.3s ease',
-    padding: isScrolled ? '12px 0' : '20px 0',
-    background: isScrolled
-      ? '#053d96e6' // Slightly more opaque for better legibility
-      : 'rgba(255, 255, 255, 0.15)',
-    backdropFilter: 'blur(12px)',
-    borderBottom: isScrolled ? 'none' : '1px solid rgba(255,255,255,0.2)',
-    boxShadow: isScrolled ? '0 4px 30px rgba(5,61,150,0.2)' : 'none',
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    padding: isScrolled ? '12px 0' : '16px 0',
+    background: isScrolled ? '#053d96' : 'transparent',
+    backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+    boxShadow: isScrolled ? '0 10px 30px rgba(5,61,150,0.15)' : 'none',
   };
 
   return (
@@ -55,9 +50,9 @@ export default function Navbar() {
             src={logo} 
             alt="Premier Aerocool" 
             style={{ 
-              height: isScrolled ? '40px' : '48px', 
+              height: isScrolled ? '38px' : '48px', 
               width: 'auto', 
-              transition: 'all 0.3s',
+              transition: 'all 0.3s ease',
               filter: isScrolled || isOpen ? 'brightness(0) invert(1)' : 'none' 
             }} 
           />
@@ -72,10 +67,10 @@ export default function Navbar() {
               style={{
                 color: isScrolled ? '#ffffff' : '#0b5699',
                 fontFamily: 'Inter, sans-serif',
-                fontWeight: 600,
+                fontWeight: 700,
                 fontSize: '15px',
                 textDecoration: 'none',
-                transition: 'color 0.2s',
+                transition: 'all 0.2s',
               }}
               onMouseEnter={e => e.target.style.color = '#3a91ce'}
               onMouseLeave={e => e.target.style.color = isScrolled ? '#ffffff' : '#0b5699'}
@@ -88,41 +83,70 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <a
           href="tel:+966561886137"
+          className="desktop-cta"
           style={{
-            background: '#014d83ff',
+            background: '#014d83',
             color: '#ffffff',
-            padding: '10px 24px',
-            borderRadius: '999px',
+            padding: '12px 28px',
+            borderRadius: '99px',
             fontWeight: 700,
             fontSize: '14px',
             fontFamily: 'Inter, sans-serif',
             textDecoration: 'none',
-            boxShadow: '0 4px 15px rgba(1,77,131,0.3)',
-            transition: 'all 0.3s',
+            boxShadow: '0 8px 20px rgba(1,77,131,0.2)',
+            transition: 'all 0.3s ease',
           }}
-          className="desktop-cta"
         >
-          Call Now
+          Call Expert
         </a>
 
-        {/* Mobile Hamburger Button */}
+        {/* Improved Hamburger Button */}
         <button
+          className="mobile-toggle"
           onClick={() => setIsOpen(!isOpen)}
-          style={{ 
-            background: 'none', 
-            border: 'none', 
-            cursor: 'pointer', 
-            fontSize: '32px', 
-            zIndex: 1001, 
-            color: isScrolled || isOpen ? '#ffffff' : '#0b5699',
+          aria-label="Toggle Menu"
+          style={{
+            width: '40px',
+            height: '40px',
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'column',
             justifyContent: 'center',
-            padding: '4px'
+            alignItems: 'center',
+            gap: '6px',
+            background: 'none',
+            border: 'none',
+            padding: '0',
+            cursor: 'pointer',
+            zIndex: 1001,
           }}
-          className="mobile-btn"
         >
-          {isOpen ? <HiX /> : <HiMenu />}
+          <span style={{
+            display: 'block',
+            width: '28px',
+            height: '3px',
+            background: isScrolled || isOpen ? '#ffffff' : '#0b5699',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease',
+            transform: isOpen ? 'rotate(45deg) translateY(12px)' : 'none'
+          }} />
+          <span style={{
+            display: 'block',
+            width: '28px',
+            height: '3px',
+            background: isScrolled || isOpen ? '#ffffff' : '#0b5699',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease',
+            opacity: isOpen ? 0 : 1
+          }} />
+          <span style={{
+            display: 'block',
+            width: '28px',
+            height: '3px',
+            background: isScrolled || isOpen ? '#ffffff' : '#0b5699',
+            borderRadius: '10px',
+            transition: 'all 0.3s ease',
+            transform: isOpen ? 'rotate(-45deg) translateY(-12px)' : 'none'
+          }} />
         </button>
       </div>
 
@@ -130,30 +154,28 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             style={{
               position: 'fixed', inset: 0,
-              background: '#053d96',
+              background: '#012a6cff',
               zIndex: 998,
-              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '24px',
-              padding: '24px'
+              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '30px',
             }}
           >
             {navLinks.map((link, i) => (
               <motion.a
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: 0.1 * i }}
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsOpen(false)}
                 style={{ 
                   color: '#ffffff', 
-                  fontSize: '28px', 
-                  fontWeight: 700, 
+                  fontSize: '32px', 
+                  fontWeight: 800, 
                   textDecoration: 'none',
                   fontFamily: 'Poppins, sans-serif'
                 }}
@@ -161,40 +183,18 @@ export default function Navbar() {
                 {link.name}
               </motion.a>
             ))}
-            
-            <motion.a
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-              href="tel:+966561886137"
-              style={{
-                marginTop: '20px',
-                background: '#ffffff',
-                color: '#053d96',
-                padding: '16px 40px',
-                borderRadius: '999px',
-                fontWeight: 700,
-                fontSize: '18px',
-                textDecoration: 'none',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-              }}
-            >
-              Contact Support
-            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
-        @media (min-width: 768px) {
-          .desktop-nav { display: flex !important; }
-          .desktop-cta { display: inline-block !important; }
-          .mobile-btn { display: none !important; }
+        @media (min-width: 992px) {
+          .desktop-nav, .desktop-cta { display: flex !important; }
+          .mobile-toggle { display: none !important; }
         }
-        @media (max-width: 767px) {
-          .desktop-nav { display: none !important; }
-          .desktop-cta { display: none !important; }
-          .mobile-btn { display: flex !important; }
+        @media (max-width: 991px) {
+          .desktop-nav, .desktop-cta { display: none !important; }
+          .mobile-toggle { display: flex !important; }
         }
       `}</style>
     </header>
