@@ -2,6 +2,8 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Professionals from './components/Professionals';
+import Clients from './components/Clients';
 import Snowflakes from './components/Snowflakes';
 
 function App() {
@@ -13,12 +15,10 @@ function App() {
         <Hero />
         <About />
         <Services />
+        <Professionals />
+        <Clients />
 
-        {/* Temporary placeholders for remaining sections */}
-        <section id="clients" className="py-24 bg-white text-center">
-          <h2 className="text-3xl font-bold text-slate-900">Clients — Coming Phase 9</h2>
-        </section>
-
+        {/* Temporary placeholder for final section */}
         <section id="contact" className="py-24 bg-slate-50 text-center">
           <h2 className="text-3xl font-bold text-slate-900">Contact — Coming Phase 10</h2>
         </section>
