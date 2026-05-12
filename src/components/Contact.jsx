@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900 mb-4 font-heading">Contact Us</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full" />
+          <div className="w-20 h-1 bg-blue-900 mx-auto rounded-full" />
           <p className="mt-6 text-slate-600 font-medium italic">"For all Air Conditioning spare parts please contact us."</p>
         </div>
 
@@ -19,7 +19,7 @@ const Contact = () => {
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="text-2xl" style={{ color: '#0b5699' }}>📍</div>
+                  <div className="text-2xl" style={{ color: '#071396ff' }}>𖡡</div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">Address</h4>
                     <p className="text-slate-600 text-sm">No: 7590, Muhammad Saeed Naset Branch,<br/>Al Nuzhah District, Jeddah, Kingdom of Saudi Arabia</p>
@@ -27,7 +27,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="text-2xl" style={{ color: '#0b5699' }}>📞</div>
+                  <div className="text-2xl" style={{ color: '#1b2deaff' }}>✆</div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">Phone</h4>
                     <p className="text-slate-600 text-sm font-semibold">+966 56 188 6137</p>
@@ -36,7 +36,7 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="text-2xl" style={{ color: '#0b5699' }}>✉️</div>
+                  <div className="text-2xl" style={{ color: '#071396ff' }}>✉</div>
                   <div>
                     <h4 className="font-bold text-slate-900 text-lg">Email</h4>
                     <p className="text-slate-600 text-sm">premieraerocoolservices@gmail.com</p>
@@ -45,7 +45,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl text-white shadow-xl" style={{ background: '#2596be' }}>
+            <div className="p-8 rounded-3xl text-white shadow-xl" style={{ background: '#134571ff' }}>
               <h4 className="text-xl font-bold mb-2">Service Hours</h4>
               <p className="text-white opacity-90 text-sm font-medium leading-relaxed">
                 Our professionals are available to assist you with any spare parts or repair needs across Jeddah and beyond. Professional support at your fingertips.
@@ -87,9 +87,9 @@ const Contact = () => {
               <button 
                 type="button"
                 className="w-full py-4 text-white font-bold rounded-xl transition-all shadow-lg" 
-                style={{ background: '#2596be' }}
-                onMouseEnter={e => e.target.style.background = '#0b5699'}
-                onMouseLeave={e => e.target.style.background = '#2596be'}
+                style={{ background: '#134571ff' }}
+                onMouseEnter={e => e.target.style.background = '#3484cbff'}
+                onMouseLeave={e => e.target.style.background = '#134571ff'}
               >
                 Send Message
               </button>
