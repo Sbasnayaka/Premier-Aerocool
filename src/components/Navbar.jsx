@@ -21,6 +21,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const navStyle = {
     position: 'fixed',
     top: 0,
@@ -29,11 +38,11 @@ export default function Navbar() {
     transition: 'all 0.3s ease',
     padding: isScrolled ? '12px 0' : '20px 0',
     background: isScrolled
-      ? '#053d9657' 
+      ? '#053d96e6' // Slightly more opaque for better legibility
       : 'rgba(255, 255, 255, 0.15)',
     backdropFilter: 'blur(12px)',
     borderBottom: isScrolled ? 'none' : '1px solid rgba(255,255,255,0.2)',
-    boxShadow: isScrolled ? '0 4px 30px rgba(11,86,153,0.3)' : 'none',
+    boxShadow: isScrolled ? '0 4px 30px rgba(5,61,150,0.2)' : 'none',
   };
 
   return (
@@ -42,7 +51,16 @@ export default function Navbar() {
 
         {/* Logo */}
         <a href="#home" style={{ display: 'flex', alignItems: 'center', zIndex: 1001 }}>
-          <img src={logo} alt="Premier Aerocool" style={{ height: '48px', width: 'auto', filter: isScrolled || isOpen ? 'brightness(0) invert(1)' : 'none' }} />
+          <img 
+            src={logo} 
+            alt="Premier Aerocool" 
+            style={{ 
+              height: isScrolled ? '40px' : '48px', 
+              width: 'auto', 
+              transition: 'all 0.3s',
+              filter: isScrolled || isOpen ? 'brightness(0) invert(1)' : 'none' 
+            }} 
+          />
         </a>
 
         {/* Desktop Nav Links */}
@@ -52,7 +70,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               style={{
-                color: isScrolled ? 'rgba(255,255,255,0.9)' : '#0b5699',
+                color: isScrolled ? '#ffffff' : '#0b5699',
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: 600,
                 fontSize: '15px',
@@ -60,7 +78,7 @@ export default function Navbar() {
                 transition: 'color 0.2s',
               }}
               onMouseEnter={e => e.target.style.color = '#3a91ce'}
-              onMouseLeave={e => e.target.style.color = isScrolled ? 'rgba(255,255,255,0.9)' : '#0b5699'}
+              onMouseLeave={e => e.target.style.color = isScrolled ? '#ffffff' : '#0b5699'}
             >
               {link.name}
             </a>
@@ -75,49 +93,94 @@ export default function Navbar() {
             color: '#ffffff',
             padding: '10px 24px',
             borderRadius: '999px',
-            fontWeight: 600,
+            fontWeight: 700,
             fontSize: '14px',
             fontFamily: 'Inter, sans-serif',
             textDecoration: 'none',
-            boxShadow: '0 0 20px rgba(37,150,190,0.4)',
+            boxShadow: '0 4px 15px rgba(1,77,131,0.3)',
             transition: 'all 0.3s',
-            display: 'none',
           }}
           className="desktop-cta"
         >
           Call Now
         </a>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '28px', zIndex: 1001, color: isScrolled || isOpen ? '#ffffff' : '#0b5699' }}
+          style={{ 
+            background: 'none', 
+            border: 'none', 
+            cursor: 'pointer', 
+            fontSize: '32px', 
+            zIndex: 1001, 
+            color: isScrolled || isOpen ? '#ffffff' : '#0b5699',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '4px'
+          }}
           className="mobile-btn"
         >
           {isOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: '-100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '-100%' }}
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             style={{
               position: 'fixed', inset: 0,
-              background: '#0b5699',
+              background: '#053d96',
               zIndex: 998,
-              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '32px',
+              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '24px',
+              padding: '24px'
             }}
           >
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
-                style={{ color: '#ffffff', fontSize: '24px', fontWeight: 600, textDecoration: 'none' }}
+            {navLinks.map((link, i) => (
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                key={link.name} 
+                href={link.href} 
+                onClick={() => setIsOpen(false)}
+                style={{ 
+                  color: '#ffffff', 
+                  fontSize: '28px', 
+                  fontWeight: 700, 
+                  textDecoration: 'none',
+                  fontFamily: 'Poppins, sans-serif'
+                }}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
+            
+            <motion.a
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 }}
+              href="tel:+966561886137"
+              style={{
+                marginTop: '20px',
+                background: '#ffffff',
+                color: '#053d96',
+                padding: '16px 40px',
+                borderRadius: '999px',
+                fontWeight: 700,
+                fontSize: '18px',
+                textDecoration: 'none',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+              }}
+            >
+              Contact Support
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -131,7 +194,7 @@ export default function Navbar() {
         @media (max-width: 767px) {
           .desktop-nav { display: none !important; }
           .desktop-cta { display: none !important; }
-          .mobile-btn { display: block !important; }
+          .mobile-btn { display: flex !important; }
         }
       `}</style>
     </header>
