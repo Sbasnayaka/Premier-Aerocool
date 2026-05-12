@@ -35,7 +35,7 @@ export default function Navbar() {
     zIndex: 999,
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     padding: isScrolled ? '12px 0' : '16px 0',
-    background: isScrolled ? '#053d96' : 'transparent',
+    background: isScrolled ? '#062e6e4a' : 'transparent',
     backdropFilter: isScrolled ? 'blur(10px)' : 'none',
     boxShadow: isScrolled ? '0 10px 30px rgba(5,61,150,0.15)' : 'none',
   };
