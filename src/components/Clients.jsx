@@ -11,7 +11,7 @@ const clients = [
 
 const Clients = () => {
   return (
-    <section id="clients" className="py-24 overflow-hidden relative" style={{ background: '#c7def0' }}>
+    <section id="clients" className="py-24 overflow-hidden relative" style={{ background: '#1394fd2f' }}>
       <div className="container mx-auto px-6 mb-12 text-center relative z-10">
         <h2 className="text-4xl font-bold text-slate-900 mb-4 font-heading">Our Trusted Clients</h2>
         <p className="text-slate-700 font-medium">Partnering with leading organizations across the Kingdom.</p>
