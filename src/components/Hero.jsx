@@ -1,83 +1,71 @@
 import { motion } from 'framer-motion';
+import logo from '../assets/LOGO.png';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
-      {/* Background Cooling Gradient & Mist Effect */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,#e0f2fe_0%,#ffffff_100%)]" />
-      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/p6-dark.png')]" />
-
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-slate-50 overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-50/50 -skew-x-12 transform origin-top-right" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row items-center gap-12">
           
-          {/* Left Column: Text Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.span 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="inline-block py-1 px-4 rounded-full bg-secondary/10 text-secondary font-medium text-sm mb-6 border border-secondary/20"
+          {/* Left: Text Content */}
+          <div className="w-full md:w-1/2 text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              ❄️ Expert Cooling Solutions in Saudi Arabia
-            </motion.span>
-            
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-primary leading-tight mb-6">
-              Cooling the <span className="text-secondary">Future.</span>
-            </h1>
-            
-            <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed">
-              Premium air conditioning spare parts, professional maintenance, and duct cleaning services. We ensure your comfort with unmatched reliability.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#contact"
-                className="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-xl shadow-primary/30 hover:bg-primary/90 transition-all"
-              >
-                Book Repair Now
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="tel:+966561886137"
-                className="bg-white text-primary border-2 border-primary/10 px-8 py-4 rounded-full font-bold hover:bg-slate-50 transition-all"
-              >
-                Call Now
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Right Column: Decorative Cooling Element */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative hidden md:block"
-          >
-            {/* Animated Glow behind the image space */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-secondary/20 blur-[100px] rounded-full animate-pulse" />
-            
-            <div className="relative z-10 bg-white/40 backdrop-blur-xl border border-white/50 p-8 rounded-3xl shadow-2xl overflow-hidden aspect-square flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">🌬️</div>
-                <p className="text-primary font-heading font-semibold text-xl">Premium AC Support</p>
-                <p className="text-slate-500 text-sm">Saudi Arabia's #1 Service</p>
-              </div>
+              <span className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-600 text-sm font-semibold mb-6">
+                ❄️ Saudi Arabia's AC Experts
+              </span>
+              <h1 className="text-5xl md:text-7xl font-bold text-slate-900 leading-tight mb-6">
+                Cooling the <span className="text-blue-500">Future.</span>
+              </h1>
+              <p className="text-lg text-slate-600 mb-8 max-w-lg leading-relaxed">
+                Premium air conditioning spare parts and professional services ensuring lasting comfort across the Kingdom.
+              </p>
               
-              {/* Floating tech icons animation simulation */}
-              <motion.div 
-                animate={{ y: [0, -15, 0] }} 
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-10 text-4xl opacity-40"
-              >❄️</motion.div>
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap gap-4">
+                <a href="#contact" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                  Book Repair Now
+                </a>
+                <a href="tel:+966561886137" className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full font-bold hover:bg-blue-50 transition">
+                  Call Now
+                </a>
+              </div>
+
+              {/* Stats */}
+              <div className="flex gap-10 mt-12 pt-8 border-t border-slate-200">
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">10+</h3>
+                  <p className="text-sm text-slate-500">Years Experience</p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">500+</h3>
+                  <p className="text-sm text-slate-500">Clients Satisfied</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: Logo Card */}
+          <div className="w-full md:w-1/2 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative p-12 bg-white rounded-3xl shadow-2xl border border-slate-100"
+            >
+              <img src={logo} alt="Premier Aerocool" className="w-64 h-auto" />
+              <div className="absolute -bottom-6 -right-6 bg-blue-500 text-white p-4 rounded-2xl shadow-xl">
+                <p className="font-bold">24/7 Support</p>
+                <p className="text-xs opacity-80 text-white">Emergency Services</p>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

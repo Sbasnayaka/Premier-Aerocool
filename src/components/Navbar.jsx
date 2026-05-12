@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
+import logo from '../assets/LOGO.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About Us', href: '#about' },
   { name: 'Our Services', href: '#services' },
   { name: 'Our Clients', href: '#clients' },
-  { name: 'Contact Us', href: '#contact' }
+  { name: 'Contact Us', href: '#contact' },
 ];
 
 export default function Navbar() {
@@ -15,68 +16,91 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-primary/95 backdrop-blur-md shadow-lg py-3'
-          : 'bg-white/10 backdrop-blur-md py-5 border-b border-white/20'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        {/* Logo */}
-        <div className="flex items-center z-50">
-          <a href="#" className={`text-2xl font-heading font-bold ${isScrolled || isOpen ? 'text-white' : 'text-primary'}`}>
-            PREMIER <span className={isScrolled || isOpen ? 'text-light' : 'text-secondary'}>AEROCOOL</span>
-          </a>
-        </div>
+  const navStyle = {
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 999,
+    transition: 'all 0.3s ease',
+    padding: isScrolled ? '12px 0' : '20px 0',
+    background: isScrolled
+      ? 'rgba(11, 86, 153, 0.97)'
+      : 'rgba(255, 255, 255, 0.15)',
+    backdropFilter: 'blur(12px)',
+    borderBottom: isScrolled ? 'none' : '1px solid rgba(255,255,255,0.2)',
+    boxShadow: isScrolled ? '0 4px 30px rgba(11,86,153,0.3)' : 'none',
+  };
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8">
+  return (
+    <header style={navStyle}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+        {/* Logo */}
+        <a href="#home" style={{ display: 'flex', alignItems: 'center', zIndex: 1001 }}>
+          <img src={logo} alt="Premier Aerocool" style={{ height: '48px', width: 'auto', filter: isScrolled || isOpen ? 'brightness(0) invert(1)' : 'none' }} />
+        </a>
+
+        {/* Desktop Nav Links */}
+        <nav style={{ display: 'flex', gap: '32px', listStyle: 'none' }} className="desktop-nav">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`font-medium transition-colors hover:text-secondary ${
-                isScrolled ? 'text-white/90' : 'text-slate-800'
-              }`}
+              style={{
+                color: isScrolled ? 'rgba(255,255,255,0.9)' : '#1e3a5f',
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 500,
+                fontSize: '15px',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.target.style.color = '#3a91ce'}
+              onMouseLeave={e => e.target.style.color = isScrolled ? 'rgba(255,255,255,0.9)' : '#1e3a5f'}
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Desktop Call Action */}
-        <div className="hidden md:block">
-          <a
-            href="tel:+966561886137"
-            className="bg-secondary hover:bg-light text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-[0_0_15px_rgba(37,150,190,0.5)] hover:shadow-[0_0_25px_rgba(37,150,190,0.8)]"
-          >
-            Call Now
-          </a>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl z-50 focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
+        {/* Desktop CTA */}
+        <a
+          href="tel:+966561886137"
+          style={{
+            background: '#3a91ce',
+            color: '#ffffff',
+            padding: '10px 24px',
+            borderRadius: '999px',
+            fontWeight: 600,
+            fontSize: '14px',
+            fontFamily: 'Inter, sans-serif',
+            textDecoration: 'none',
+            boxShadow: '0 0 20px rgba(37,150,190,0.4)',
+            transition: 'all 0.3s',
+            display: 'none',
+          }}
+          className="desktop-cta"
+          onMouseEnter={e => { e.target.style.background = '#0b5699'; e.target.style.boxShadow = '0 0 30px rgba(11,86,153,0.5)'; }}
+          onMouseLeave={e => { e.target.style.background = '#3a91ce'; e.target.style.boxShadow = '0 0 20px rgba(37,150,190,0.4)'; }}
         >
-          {isOpen ? (
-            <HiX className="text-white" />
-          ) : (
-            <HiMenu className={isScrolled ? 'text-white' : 'text-primary'} />
-          )}
+          Call Now
+        </a>
+
+        {/* Mobile Hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '28px', zIndex: 1001, color: isScrolled || isOpen ? '#ffffff' : '#0b5699' }}
+          className="mobile-btn"
+        >
+          {isOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
 
-      {/* Mobile Nav Overlay */}
+      {/* Mobile Full Screen Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -84,30 +108,67 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 bg-primary z-40 flex flex-col justify-center items-center h-screen w-full"
+            style={{
+              position: 'fixed', inset: 0,
+              background: '#0b5699',
+              zIndex: 998,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '32px',
+            }}
           >
-            <nav className="flex flex-col space-y-8 text-center text-xl">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white font-medium hover:text-light transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+            {navLinks.map((link) => (
               <a
-                href="tel:+966561886137"
+                key={link.name}
+                href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="bg-secondary hover:bg-light transition-colors text-white px-8 py-3 rounded-full font-medium mt-4 shadow-lg"
+                style={{
+                  color: '#ffffff',
+                  fontSize: '24px',
+                  fontFamily: 'Poppins, sans-serif',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                }}
               >
-                Call Now
+                {link.name}
               </a>
-            </nav>
+            ))}
+            <a
+              href="tel:+966561886137"
+              onClick={() => setIsOpen(false)}
+              style={{
+                background: '#3a91ce',
+                color: '#ffffff',
+                padding: '14px 36px',
+                borderRadius: '999px',
+                fontWeight: 700,
+                fontSize: '16px',
+                fontFamily: 'Inter, sans-serif',
+                textDecoration: 'none',
+                marginTop: '16px',
+              }}
+            >
+              📞 Call Now
+            </a>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Responsive CSS */}
+      <style>{`
+        @media (min-width: 768px) {
+          .desktop-nav { display: flex !important; }
+          .desktop-cta { display: inline-block !important; }
+          .mobile-btn { display: none !important; }
+        }
+        @media (max-width: 767px) {
+          .desktop-nav { display: none !important; }
+          .desktop-cta { display: none !important; }
+          .mobile-btn { display: block !important; }
+        }
+      `}</style>
     </header>
   );
 }
