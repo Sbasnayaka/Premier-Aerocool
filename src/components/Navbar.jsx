@@ -29,7 +29,7 @@ export default function Navbar() {
     transition: 'all 0.3s ease',
     padding: isScrolled ? '12px 0' : '20px 0',
     background: isScrolled
-      ? 'rgba(11, 86, 153, 0.97)'
+      ? '#053d9657' // Updated to main dark blue
       : 'rgba(255, 255, 255, 0.15)',
     backdropFilter: 'blur(12px)',
     borderBottom: isScrolled ? 'none' : '1px solid rgba(255,255,255,0.2)',
@@ -52,15 +52,15 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               style={{
-                color: isScrolled ? 'rgba(255,255,255,0.9)' : '#1e3a5f',
+                color: isScrolled ? 'rgba(255,255,255,0.9)' : '#0b5699',
                 fontFamily: 'Inter, sans-serif',
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: '15px',
                 textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
               onMouseEnter={e => e.target.style.color = '#3a91ce'}
-              onMouseLeave={e => e.target.style.color = isScrolled ? 'rgba(255,255,255,0.9)' : '#1e3a5f'}
+              onMouseLeave={e => e.target.style.color = isScrolled ? 'rgba(255,255,255,0.9)' : '#0b5699'}
             >
               {link.name}
             </a>
@@ -84,8 +84,6 @@ export default function Navbar() {
             display: 'none',
           }}
           className="desktop-cta"
-          onMouseEnter={e => { e.target.style.background = '#0b5699'; e.target.style.boxShadow = '0 0 30px rgba(11,86,153,0.5)'; }}
-          onMouseLeave={e => { e.target.style.background = '#3a91ce'; e.target.style.boxShadow = '0 0 20px rgba(37,150,190,0.4)'; }}
         >
           Call Now
         </a>
@@ -100,63 +98,30 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Full Screen Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
-            transition={{ type: 'tween', duration: 0.3 }}
             style={{
               position: 'fixed', inset: 0,
               background: '#0b5699',
               zIndex: 998,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '32px',
+              display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '32px',
             }}
           >
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                style={{
-                  color: '#ffffff',
-                  fontSize: '24px',
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                }}
+              <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
+                style={{ color: '#ffffff', fontSize: '24px', fontWeight: 600, textDecoration: 'none' }}
               >
                 {link.name}
               </a>
             ))}
-            <a
-              href="tel:+966561886137"
-              onClick={() => setIsOpen(false)}
-              style={{
-                background: '#3a91ce',
-                color: '#ffffff',
-                padding: '14px 36px',
-                borderRadius: '999px',
-                fontWeight: 700,
-                fontSize: '16px',
-                fontFamily: 'Inter, sans-serif',
-                textDecoration: 'none',
-                marginTop: '16px',
-              }}
-            >
-              📞 Call Now
-            </a>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Responsive CSS */}
       <style>{`
         @media (min-width: 768px) {
           .desktop-nav { display: flex !important; }

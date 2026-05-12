@@ -28,7 +28,7 @@ const Hero = () => {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <a href="#contact" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                <a href="#contact" className="px-8 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-600 transition shadow-lg shadow-blue-200">
                   Book Repair Now
                 </a>
                 <a href="tel:+966561886137" className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-full font-bold hover:bg-blue-50 transition">

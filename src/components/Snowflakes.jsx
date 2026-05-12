@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion';
 
 const Snowflakes = () => {
-  // Creating a mix of 30 elements (Emojis and Images)
-  const elements = Array.from({ length: 30 });
+  const elements = Array.from({ length: 25 });
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden">
       {elements.map((_, i) => {
-        const isImage = i % 2 === 0; // Toggle between image and emoji
+        const isImage = i % 2 === 0;
         
         return (
           <motion.div
@@ -24,7 +23,7 @@ const Snowflakes = () => {
               rotate: Math.random() * 360 + 360
             }}
             transition={{
-              duration: Math.random() * 15 + 15,
+              duration: Math.random() * 10 + 15,
               repeat: Infinity,
               delay: Math.random() * 20,
               ease: "linear"
@@ -35,7 +34,7 @@ const Snowflakes = () => {
               <img 
                 src="/snowflake.png" 
                 alt="snow" 
-                className="w-4 h-4 md:w-6 md:h-6 opacity-30" 
+                className="w-4 h-4 md:w-6 md:h-6 object-contain" 
               />
             ) : (
               <span className="text-secondary/30 text-xl md:text-2xl">❄</span>
