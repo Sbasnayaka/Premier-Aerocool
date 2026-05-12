@@ -71,7 +71,7 @@ export default function Navbar() {
         <a
           href="tel:+966561886137"
           style={{
-            background: '#3a91ce',
+            background: '#014d83ff',
             color: '#ffffff',
             padding: '10px 24px',
             borderRadius: '999px',
